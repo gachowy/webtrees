@@ -1,0 +1,29 @@
+version: "3.3"
+
+services:
+  webtrees-web:
+    build:
+      context: ../
+    container_name: webtrees-web
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ../:/var/www/html
+    links:
+      - webtrees-db
+
+
+  webtrees-db:
+    image: mysql:5.7
+    container_name: webtrees-db
+    ports:
+      - 3306:3306
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./dumps:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: webtrees
+      MYSQL_USER: webtrees
+      MYSQL_PASSWORD: webtrees

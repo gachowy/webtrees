@@ -165,6 +165,22 @@ defaults are good for most people. If you get stuck, there's lots of built-in
 help and you can get friendly advice from the [help](https://webtrees.net/forums)
 forum.
 
+## Installation on Docker
+
+We can prepare local development environment with [Docker](https://www.docker.com/) and attached to project `docker-compose` file.
+
+### Requirements:
+- docker (17.06.0+)
+- docker-compose
+
+### Setting up
+
+1. `docker-compose -f ./docker/docker-compose.dev.yml up` in root folder of project
+2. Go to `http://localhost` to view webpage
+
+### Known issues
+- Sometimes, configuration of Docker, doesn't correctly handles a permission. Than a `chmod 777 -R` was needed for directories like `./resources` or `./data`
+
 
 ## Upgrading
 
